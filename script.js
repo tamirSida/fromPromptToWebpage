@@ -488,6 +488,19 @@ const slides = [
             <li>Building and deploying static websites</li>
           </ul>
           
+          <div class="example-box">
+            <p><strong>⚠️ Important Security Warning:</strong></p>
+            <p>When working with client-side applications:</p>
+            <ul>
+              <li>NEVER include API keys, passwords, or sensitive data in your code</li>
+              <li>Remember that all JavaScript code is visible to users</li>
+              <li>Be skeptical of AI-generated security solutions</li>
+              <li>Use server-side processing for authentication and sensitive operations</li>
+              <li>Validate user input both client-side AND server-side</li>
+            </ul>
+            <p>If you need these features, consider learning about backend development or using trusted third-party services.</p>
+          </div>
+          
           <p><strong>Recommended Resources:</strong></p>
           <ul>
             <li><a href="https://developer.mozilla.org/en-US/" target="_blank">MDN Web Docs</a> - Web development reference</li>
