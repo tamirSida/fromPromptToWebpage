@@ -668,6 +668,86 @@ footer::before {
   text-align: center;
 }
 
+/* Scroll indicator for slides with overflow content */
+.scroll-indicator {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--primary);
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.scroll-indicator.visible {
+  opacity: 1;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* Special slide styling */
+.slide.reveal-slide .slide-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.reveal-box {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(11, 244, 136, 0.1));
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+  max-width: 80%;
+  box-shadow: var(--neon-glow);
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal-box:hover {
+  transform: scale(1.05);
+}
+
+.reveal-box p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.reveal-box .big-reveal {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1.5rem 0;
+  color: var(--primary);
+  text-shadow: var(--neon-glow);
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary);
+  opacity: 0;
+  z-index: 100;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   header {
@@ -692,5 +772,9 @@ footer::before {
   
   .slide-nav {
     display: none;
+  }
+  
+  .reveal-box {
+    max-width: 95%;
   }
 }

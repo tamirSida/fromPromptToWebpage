@@ -253,6 +253,31 @@ const slides = [
         `
     },
     {
+        title: "Live Demo",
+        content: `
+          <div class="center-content">
+            <p>Now let's see AI web development in action!</p>
+            
+            <div class="example-box">
+              <p><strong>Our Example Prompt:</strong></p>
+              <p>"Create a responsive personal portfolio website with a modern design. Include sections for About Me, Skills, Projects, and Contact. Use a dark color scheme with cyan accents. Include HTML, CSS, and a small amount of JavaScript for interactivity."</p>
+            </div>
+            
+            <p class="highlight">Watch as we generate a complete website in minutes rather than days!</p>
+            
+            <div class="example-box">
+              <p><strong>Steps We'll Follow:</strong></p>
+              <ol>
+                <li>Submit the prompt to an AI assistant</li>
+                <li>Review the generated code</li>
+                <li>Save the files to our computer</li>
+                <li>Open in a browser to see the result</li>
+              </ol>
+            </div>
+          </div>
+        `
+    },
+    {
         title: "Project Workflow",
         content: `
           <p>Let's break down the process of creating an AI-generated website:</p>
@@ -420,11 +445,33 @@ const slides = [
           <p><strong>Step 3:</strong> Save the files and test locally</p>
           <p><strong>Step 4:</strong> Deploy to Netlify</p>
           
-          <p>We'll have a short break, then I'll provide 1-on-1 assistance as you work on your projects.</p>
+          
           
           <div class="example-box">
             <p><strong>Example Prompt:</strong></p>
             <p>"Create a clean, minimal personal website for me, a [your profession]. I need an index.html, style.css, and script.js file. The website should have a responsive design and include sections for About Me, Skills, Projects, and Contact. Use a light color scheme with [color] accents. Include placeholder text that I can easily replace with my information."</p>
+          </div>
+        `
+    },
+    {
+        title: "Wait, There's Something I Need to Tell You...",
+        content: `
+          <div class="center-content reveal-slide">
+            <p>Before we wrap up, I have a little secret to share...</p>
+            
+            <div class="reveal-box" id="secretReveal">
+              <p>This entire presentation you've been watching...</p>
+              <p class="big-reveal">IS A WEB APP ITSELF!</p>
+              <p>That's right! Everything you're seeing was built using the exact same technologies we just learned about:</p>
+              <ul>
+                <li>HTML for structure</li>
+                <li>CSS for the futuristic styling</li>
+                <li>JavaScript for the interactive slides</li>
+              </ul>
+              <p>No PowerPoint. No Keynote. Just web technology!</p>
+            </div>
+            
+            <p>This presentation is a real-world example of what you can build after today's workshop.</p>
           </div>
         `
     },
@@ -487,6 +534,12 @@ function initPresentation() {
   
   // Add event listeners
   addEventListeners();
+  
+  // Add scroll indicator to slides with overflow content
+  addScrollIndicators();
+  
+  // Add confetti effect to reveal slide
+  initRevealEffects();
 }
 
 // Create slide elements
@@ -496,6 +549,11 @@ function createSlides() {
     slideElement.className = 'slide';
     slideElement.id = `slide-${index}`;
     
+    // Add special class for reveal slide
+    if (slide.title === "Wait, There's Something I Need to Tell You...") {
+      slideElement.classList.add('reveal-slide');
+    }
+    
     const slideInner = document.createElement('div');
     slideInner.className = 'slide-inner';
     
@@ -503,6 +561,12 @@ function createSlides() {
       <h2 class="slide-title">${slide.title}</h2>
       <div class="slide-content">${slide.content}</div>
     `;
+    
+    // Add scroll indicator
+    const scrollIndicator = document.createElement('div');
+    scrollIndicator.className = 'scroll-indicator';
+    scrollIndicator.innerHTML = '<i>⬇️ Scroll for more</i>';
+    slideElement.appendChild(scrollIndicator);
     
     slideElement.appendChild(slideInner);
     slideContainer.appendChild(slideElement);
@@ -522,6 +586,77 @@ function createNavDots() {
     
     slideNav.appendChild(dot);
   });
+}
+
+// Check if slide has overflow content and show/hide scroll indicator
+function addScrollIndicators() {
+  const slideInners = document.querySelectorAll('.slide-inner');
+  const indicators = document.querySelectorAll('.scroll-indicator');
+  
+  slideInners.forEach((slideInner, index) => {
+    const checkScroll = () => {
+      const hasOverflow = slideInner.scrollHeight > slideInner.clientHeight;
+      const scrolledToBottom = Math.ceil(slideInner.scrollTop + slideInner.clientHeight) >= slideInner.scrollHeight;
+      
+      if (hasOverflow && !scrolledToBottom && currentSlide === index) {
+        indicators[index].classList.add('visible');
+      } else {
+        indicators[index].classList.remove('visible');
+      }
+    };
+    
+    // Check on slide change
+    slideInner.addEventListener('scroll', checkScroll);
+    
+    // Set up a resize observer to check when size changes
+    const resizeObserver = new ResizeObserver(checkScroll);
+    resizeObserver.observe(slideInner);
+  });
+}
+
+// Initialize special effects for the reveal slide
+function initRevealEffects() {
+  // Setup for confetti effect on reveal slide
+  const secretReveal = document.getElementById('secretReveal');
+  
+  if (secretReveal) {
+    secretReveal.addEventListener('click', () => {
+      launchConfetti();
+    });
+  }
+}
+
+// Confetti animation
+function launchConfetti() {
+  const colors = ['#00f2fe', '#0BF488', '#ff2e63'];
+  const confettiCount = 100;
+  
+  for (let i = 0; i < confettiCount; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.top = -20 + 'px';
+    confetti.style.width = Math.random() * 10 + 5 + 'px';
+    confetti.style.height = Math.random() * 10 + 5 + 'px';
+    confetti.style.opacity = 1;
+    confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+    document.body.appendChild(confetti);
+    
+    const animation = confetti.animate(
+      [
+        { transform: 'translate3d(0,0,0) rotate(0deg)', opacity: 1 },
+        { transform: 'translate3d(' + (Math.random() * 300 - 150) + 'px,' + (Math.random() * 500 + 500) + 'px,0) rotate(' + Math.random() * 360 + 'deg)', opacity: 0 }
+      ],
+      {
+        duration: Math.random() * 2000 + 2000,
+        easing: 'cubic-bezier(0,.9,.57,1)',
+        delay: Math.random() * 1000
+      }
+    );
+    
+    animation.onfinish = () => confetti.remove();
+  }
 }
 
 // Show specific slide
@@ -554,6 +689,27 @@ function showSlide(index) {
   
   // Update button states
   updateButtonStates();
+  
+  // Check scroll indicators
+  checkScrollIndicators();
+}
+
+// Check if current slide needs scroll indicator
+function checkScrollIndicators() {
+  const slideInners = document.querySelectorAll('.slide-inner');
+  const indicators = document.querySelectorAll('.scroll-indicator');
+  
+  if (slideInners[currentSlide]) {
+    const slideInner = slideInners[currentSlide];
+    const hasOverflow = slideInner.scrollHeight > slideInner.clientHeight;
+    const scrolledToBottom = Math.ceil(slideInner.scrollTop + slideInner.clientHeight) >= slideInner.scrollHeight;
+    
+    if (hasOverflow && !scrolledToBottom) {
+      indicators[currentSlide].classList.add('visible');
+    } else {
+      indicators[currentSlide].classList.remove('visible');
+    }
+  }
 }
 
 // Update navigation dots
@@ -632,6 +788,15 @@ function addEventListeners() {
       showSlide(currentSlide - 1);
     }
   }
+  
+  // Monitor slide content scrolling to update indicators
+  document.querySelectorAll('.slide-inner').forEach((slideInner, index) => {
+    slideInner.addEventListener('scroll', () => {
+      if (currentSlide === index) {
+        checkScrollIndicators();
+      }
+    });
+  });
 }
 
 // Initialize on page load
