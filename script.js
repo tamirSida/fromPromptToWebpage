@@ -514,7 +514,7 @@ const slides = [
             <p>Web development is becoming increasingly accessible thanks to AI tools. You now have the foundation to create your own web presence without needing years of traditional coding education. Keep experimenting, learning, and building!</p>
           </div>
           
-          <p><strong>Questions?</strong> Feel free to reach out anytime at [your-email@example.com]</p>
+          <p><strong>Questions?</strong> Feel free to reach out anytime at tamir@versionbravo.com</p>
         `
     }
 ];
