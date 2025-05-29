@@ -260,19 +260,24 @@ const slides = [
             
             <div class="example-box">
               <p><strong>Our Example Prompt:</strong></p>
-              <p>"Create a responsive personal portfolio website with a modern design. Include sections for About Me, Skills, Projects, and Contact. Use a dark color scheme with cyan accents. Include HTML, CSS, and a small amount of JavaScript for interactivity."</p>
+              <p>"Create an interactive chess game website using HTML, CSS, and JavaScript. I need a modern, visually appealing chess board with drag-and-drop functionality for moving pieces. Include move validation, turn-based gameplay, check detection, and a clean UI showing whose turn it is. Use a dark theme with glowing effects and smooth animations. The game should be fully playable between two players on the same device."</p>
             </div>
             
-            <p class="highlight">Watch as we generate a complete website in minutes rather than days!</p>
+            <p class="highlight">Watch as we generate a complete interactive chess game in minutes!</p>
             
             <div class="example-box">
               <p><strong>Steps We'll Follow:</strong></p>
               <ol>
                 <li>Submit the prompt to an AI assistant</li>
-                <li>Review the generated code</li>
+                <li>Review the generated code (HTML structure, CSS styling, JS game logic)</li>
                 <li>Save the files to our computer</li>
                 <li>Open in a browser to see the result</li>
+                <li>Test the gameplay (drag pieces, validate moves, play a few turns)</li>
               </ol>
+            </div>
+            
+            <div class="example-box">
+              <p><strong>Why This Example?</strong> A chess game demonstrates complex JavaScript logic, interactive UI, game state management, and visual feedback - perfect for showing AI's capability to create sophisticated applications!</p>
             </div>
           </div>
         `
@@ -427,29 +432,32 @@ const slides = [
     {
         title: "Hands-On Project",
         content: `
-          <p>Now it's your turn! Let's create a personal website together.</p>
+          <p>Now it's your turn! Let's create a website together.</p>
           
           <div class="example-box">
             <p><strong>Project Brief:</strong></p>
-            <p>Create a simple personal/portfolio website with the following sections:</p>
+            <p>Create a simple website that represents you or your interests. Here are some examples:</p>
             <ul>
-              <li>Hero section with your name and title</li>
-              <li>About section with a short bio</li>
-              <li>Skills or projects section</li>
-              <li>Contact information</li>
+              <li><strong>Personal Portfolio</strong> - Showcase your skills and experience</li>
+              <li><strong>Business Landing Page</strong> - Promote a service or product</li>
+              <li><strong>Hobby/Interest Site</strong> - Share your passion (photography, cooking, etc.)</li>
+              <li><strong>Event Page</strong> - Promote an upcoming event or gathering</li>
+              <li><strong>Simple Blog</strong> - Share your thoughts and ideas</li>
             </ul>
+            <p>Your website should include 3-5 sections that make sense for your chosen type.</p>
           </div>
           
-          <p><strong>Step 1:</strong> Craft your prompt based on the techniques we've learned</p>
-          <p><strong>Step 2:</strong> Generate the code using ChatGPT, Claude, or another AI tool</p>
-          <p><strong>Step 3:</strong> Save the files and test locally</p>
-          <p><strong>Step 4:</strong> Deploy to Netlify</p>
+          <p><strong>Step 1:</strong> Decide what type of website you want to create</p>
+          <p><strong>Step 2:</strong> Craft your prompt based on the techniques we've learned</p>
+          <p><strong>Step 3:</strong> Generate the code using ChatGPT, Claude, or another AI tool</p>
+          <p><strong>Step 4:</strong> Save the files and test locally</p>
+          <p><strong>Step 5:</strong> Deploy to Netlify</p>
           
-          
+          <p>We'll have a short break, then I'll provide 1-on-1 assistance as you work on your projects.</p>
           
           <div class="example-box">
-            <p><strong>Example Prompt:</strong></p>
-            <p>"Create a clean, minimal personal website for me, a [your profession]. I need an index.html, style.css, and script.js file. The website should have a responsive design and include sections for About Me, Skills, Projects, and Contact. Use a light color scheme with [color] accents. Include placeholder text that I can easily replace with my information."</p>
+            <p><strong>Example Prompt Template:</strong></p>
+            <p>"Create a [type of website] for [your purpose/audience]. I need an index.html, style.css, and script.js file. The website should have a responsive design and include sections for [list your desired sections]. Use a [describe your preferred style] design with [color preferences]. Include placeholder text that I can easily replace with my information."</p>
           </div>
         `
     },
